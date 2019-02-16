@@ -5,6 +5,10 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Currency;
+import java.util.Locale;
 
 public class ListTableLaptop extends MainInventory {
      JPanel panelListTableLaptop;
@@ -17,8 +21,10 @@ public class ListTableLaptop extends MainInventory {
      JTable tblTableListLaptop;
      JButton btnSearch;
      JScrollPane jspTblScroll;
-     private JRadioButton rbHarga;
+     JRadioButton rbHarga;
      ButtonGroup rbGroup = new ButtonGroup();
+     Locale locale = new Locale("in", "ID");
+     Currency currency = Currency.getInstance(locale);
 
     public void setRbGroup() {
         rbGroup.add(rbMerk);
@@ -29,6 +35,8 @@ public class ListTableLaptop extends MainInventory {
     }
 
     public ListTableLaptop(){
+         String a,b;
+         Integer c,d;
         setRbGroup();
         model = new DefaultTableModel(){
             @Override
@@ -36,6 +44,7 @@ public class ListTableLaptop extends MainInventory {
                 return false;
             }
         };
+
         model.addColumn("Merk Laptop");
         model.addColumn("Tipe Laptop");
         model.addColumn("Jumlah Ready");
@@ -46,11 +55,12 @@ public class ListTableLaptop extends MainInventory {
             preparedStatement = connection.prepareStatement(sql);
             result = preparedStatement.executeQuery();
             while (result.next()){
-                String a = result.getString(2);
-                String b = result.getString(3);
-                Integer c = result.getInt(4);
-                Integer d = result.getInt(5);
-                model.addRow(new Object[]{a,b,c,d});
+                 a = result.getString(2);
+                 b = result.getString(3);
+                 c = result.getInt(4);
+                 d = result.getInt(5);
+                 String D = currency.getSymbol(locale)+" "+String.format("%,d",d);
+                 model.addRow(new Object[]{a,b,c,D});
             }
             tblTableListLaptop.setModel(model);
 //            tblTableListLaptop;
@@ -60,13 +70,21 @@ public class ListTableLaptop extends MainInventory {
         btnSearch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                searchLaptop();
+
+                if (tfSearch.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Kotak Pencarian Kosong !");
+                } else {
+                    searchLaptop();
+                }
+
             }
         });
     }
 
     private void searchLaptop(){
         String search;
+        String a,b,D;
+        Integer c,d;
 
         if (rbMerk.isSelected()){
             String sql = "SELECT * FROM laptop WHERE merk_laptop=?";
@@ -78,11 +96,12 @@ public class ListTableLaptop extends MainInventory {
                 result = preparedStatement.executeQuery();
                 model.setRowCount(0);
                 while (result.next()){
-                    String a = result.getString(2);
-                    String b = result.getString(3);
-                    Integer c = result.getInt(4);
-                    Integer d = result.getInt(5);
-                    model.addRow(new Object[]{a,b,c,d});
+                    a = result.getString(2);
+                    b = result.getString(3);
+                    c = result.getInt(4);
+                    d = result.getInt(5);
+                    D = currency.getSymbol(locale)+" "+String.format("%,d",d);
+                    model.addRow(new Object[]{a,b,c,D});
                 }
                 tblTableListLaptop.setModel(model);
 //            tblTableListLaptop;
@@ -99,11 +118,12 @@ public class ListTableLaptop extends MainInventory {
                 result = preparedStatement.executeQuery();
                 model.setRowCount(0);
                 while (result.next()){
-                    String a = result.getString(2);
-                    String b = result.getString(3);
-                    Integer c = result.getInt(4);
-                    Integer d = result.getInt(5);
-                    model.addRow(new Object[]{a,b,c,d});
+                    a = result.getString(2);
+                    b = result.getString(3);
+                    c = result.getInt(4);
+                    d = result.getInt(5);
+                    D = currency.getSymbol(locale)+" "+String.format("%,d",d);
+                    model.addRow(new Object[]{a,b,c,D});
                 }
                 tblTableListLaptop.setModel(model);
 //            tblTableListLaptop;
@@ -120,11 +140,12 @@ public class ListTableLaptop extends MainInventory {
                 result = preparedStatement.executeQuery();
                 model.setRowCount(0);
                 while (result.next()){
-                    String a = result.getString(2);
-                    String b = result.getString(3);
-                    Integer c = result.getInt(4);
-                    Integer d = result.getInt(5);
-                    model.addRow(new Object[]{a,b,c,d});
+                    a = result.getString(2);
+                    b = result.getString(3);
+                    c = result.getInt(4);
+                    d = result.getInt(5);
+                    D = currency.getSymbol(locale)+" "+String.format("%,d",d);
+                    model.addRow(new Object[]{a,b,c,D});
                 }
                 tblTableListLaptop.setModel(model);
 //            tblTableListLaptop;
@@ -141,11 +162,12 @@ public class ListTableLaptop extends MainInventory {
                 result = preparedStatement.executeQuery();
                 model.setRowCount(0);
                 while (result.next()){
-                    String a = result.getString(2);
-                    String b = result.getString(3);
-                    Integer c = result.getInt(4);
-                    Integer d = result.getInt(5);
-                    model.addRow(new Object[]{a,b,c,d});
+                    a = result.getString(2);
+                    b = result.getString(3);
+                    c = result.getInt(4);
+                    d = result.getInt(5);
+                    D = currency.getSymbol(locale)+" "+String.format("%,d",d);
+                    model.addRow(new Object[]{a,b,c,D});
                 }
                 tblTableListLaptop.setModel(model);
 //            tblTableListLaptop;
@@ -157,7 +179,7 @@ public class ListTableLaptop extends MainInventory {
 
     public static void main(String[] args) {
 
-        LaptopListSearch.setTitle("List Laptop Ready + Harga");
+        LaptopListSearch.setTitle("List Laptop Ready ");
         LaptopListSearch.setContentPane(new ListTableLaptop().panelListTableLaptop);
         LaptopListSearch.pack();
         LaptopListSearch.setVisible(true);
