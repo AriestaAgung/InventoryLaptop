@@ -1,6 +1,5 @@
 package tech.devatacreative;
 
-import javax.sql.rowset.JdbcRowSet;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,8 +13,7 @@ public class MakeConnection {
     public void  makeConnection() {
 
         try {
-
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/toko", "root", "");
+            connection =  DriverManager.getConnection("jdbc:mysql://localhost/toko", "root", "");
             statement = connection.createStatement();
 //            result = statement.execute();
 //            result = statement.executeQuery("SELECT * FROM laptop");
@@ -24,8 +22,8 @@ public class MakeConnection {
 
 
         } catch (SQLException e) {
-            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(MainInventory.class.getName()).log(Level.SEVERE, null, e);
 //            return null;
-        }
+
     }
-}
+}}

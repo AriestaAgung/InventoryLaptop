@@ -25,7 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="751ebbe1-e436-42b8-90b1-9adb202279c9">
-        <schema name="toko" object-types="dataset trigger, table, constraint, view, column, index, function, procedure" />
+        <schema name="toko" object-types="procedure, table, column, function, index, dataset trigger, constraint, view" />
       </connection>
     </loaded-nodes>
   </component>

@@ -2,15 +2,15 @@ package tech.devatacreative;
 
 public class Laptop {
 
-    private int id, jmlReady;
+    private int id, jmlReady, harga;
     private String merkLaptop, tipeLaptop;
-    private Byte[] gambar;
-    public Laptop(String merk, String tipe, Integer id, Integer jml){
+
+    public Laptop(String merk, String tipe, Integer id, Integer jml, Integer price){
         this.id = id;
         this.merkLaptop = merk;
         this.tipeLaptop = tipe;
         this.jmlReady = jml;
-
+        this.harga = price;
     }
 
     public int getId() {
@@ -29,7 +29,7 @@ public class Laptop {
         return tipeLaptop;
     }
 
-    public Byte[] getGambar() {
-        return gambar;
+    public int getHarga() {
+        return harga;
     }
 }

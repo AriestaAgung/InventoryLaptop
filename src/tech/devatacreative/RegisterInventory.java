@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class RegisterForm extends LoginForm{
+public class RegisterInventory extends LoginInventory {
     private JTextField tfNama;
     private JTextField tfUser;
     private JPasswordField pfPass;
@@ -16,7 +16,7 @@ public class RegisterForm extends LoginForm{
     static JFrame registerFrame = new JFrame("Register");
 
 
-    public RegisterForm() {
+    public RegisterInventory() {
         btnRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -43,13 +43,13 @@ public class RegisterForm extends LoginForm{
             tampilLoginForm();
             registerFrame.dispose();
         }catch (SQLException e){
-            Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(RegisterInventory.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
     public static void main(String[] args) {
 
-        registerFrame.setContentPane(new RegisterForm().panelRegister);
+        registerFrame.setContentPane(new RegisterInventory().panelRegister);
         registerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         registerFrame.pack();
         registerFrame.setVisible(true);

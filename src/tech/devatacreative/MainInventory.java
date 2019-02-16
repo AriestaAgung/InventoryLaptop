@@ -1,24 +1,10 @@
 package tech.devatacreative;
 
-import net.proteanit.sql.DbUtils;
-
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.PseudoColumnUsage;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.text.Normalizer;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-public class MainForm extends MakeConnection{
+public class MainInventory extends MakeConnection{
     private JTextField tfMerkLaptop;
     private JTextField tfTipeLaptop;
     private JTextField tfJmlReady;
@@ -27,9 +13,10 @@ public class MainForm extends MakeConnection{
     private JButton btnDeleteData;
     private JPanel panelMain;
     private JButton btnTableLaptop;
+    private JTextField tfHargaLaptop;
 
 
-    public MainForm() {
+    public MainInventory() {
 
         btnSubmitData.addActionListener(new ActionListener() {
             @Override
@@ -63,21 +50,28 @@ public class MainForm extends MakeConnection{
     }
 
     public void insertData(){
-        String varMerk, varTipe, varJml, sql;
+        String varMerk, varTipe, sql;
+        Integer varHarga,varJml;
         makeConnection();
 
         try {
             varMerk = tfMerkLaptop.getText();
             varTipe = tfTipeLaptop.getText();
-            varJml = tfJmlReady.getText();
-            sql = "INSERT INTO laptop(merk_laptop, tipe_laptop, ready) VALUES(?,?,?)";
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, varMerk);
-            preparedStatement.setString(2, varTipe);
-            preparedStatement.setString(3, varJml);
-            preparedStatement.executeUpdate();
+            varJml = Integer.parseInt(tfJmlReady.getText());
+            varHarga = Integer.parseInt(tfHargaLaptop.getText());
+            if (varJml.equals("") || varMerk.equals("") || varTipe.equals("") || varHarga.equals("")){
+                JOptionPane.showMessageDialog(null, "Input Data Gagal !");
+            } else {
+                sql = "INSERT INTO laptop(merk_laptop, tipe_laptop, ready, harga) VALUES(?,?,?,?)";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, varMerk);
+                preparedStatement.setString(2, varTipe);
+                preparedStatement.setInt(3, varJml);
+                preparedStatement.setInt(4, varHarga);
+                preparedStatement.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Input Data Sukses !");
+                JOptionPane.showMessageDialog(null, "Input Data Sukses !");
+            }
         } catch (Exception e ){
             e.printStackTrace();
         }
@@ -85,11 +79,11 @@ public class MainForm extends MakeConnection{
 
     public void setBtnUpdateData(){
        JFrame updateFrame = new JFrame("Inventory Laptop - Update");
-       updateFrame.setContentPane(new UpdateForm().panelUpdate);
+       updateFrame.setContentPane(new UpdateInventory().panelUpdate);
        updateFrame.pack();
        updateFrame.setVisible(true);
        updateFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        updateFrame.setResizable(false);
+       updateFrame.setResizable(false);
     }
     public void setBtnTableLaptop(){
         JFrame ListLaptopFrame = new JFrame();
@@ -102,7 +96,7 @@ public class MainForm extends MakeConnection{
     }
     public void setBtnDeleteData(){
         JFrame updateFrame = new JFrame("Inventory Laptop - Delete");
-        updateFrame.setContentPane(new DeleteForm().panelDelete);
+        updateFrame.setContentPane(new DeleteInventory().panelDelete);
         updateFrame.pack();
         updateFrame.setVisible(true);
         updateFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -110,7 +104,7 @@ public class MainForm extends MakeConnection{
     }
     public static void tampilMainForm(){
         JFrame mainFrame = new JFrame("Inventory Laptop");
-        mainFrame.setContentPane(new MainForm().panelMain);
+        mainFrame.setContentPane(new MainInventory().panelMain);
         mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         mainFrame.pack();
         mainFrame.setVisible(true);
@@ -169,7 +163,7 @@ public class MainForm extends MakeConnection{
 //            }
 //
 //        } catch (SQLException e) {
-//            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, e);
+//            Logger.getLogger(MainInventory.class.getName()).log(Level.SEVERE, null, e);
 //        }
 //        return LaptopList;
 //    }

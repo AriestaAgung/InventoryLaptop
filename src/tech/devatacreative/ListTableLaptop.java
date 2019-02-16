@@ -1,73 +1,84 @@
 package tech.devatacreative;
 
-import net.proteanit.sql.DbUtils;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-public class ListTableLaptop extends MainForm {
+public class ListTableLaptop extends MainInventory {
      JPanel panelListTableLaptop;
      JRadioButton rbMerk;
      JRadioButton rbTipe;
      JRadioButton rbReady;
      JTextField tfSearch;
-    DefaultTableModel model = new DefaultTableModel();
-    private static JFrame LaptopListSearch = new JFrame("List Laptop");
-    private JTable tblListLaptop = new JTable(model);
-    private JButton btnSearch;
-
+     DefaultTableModel model;
+     static JFrame LaptopListSearch = new JFrame("List Laptop");
+     JTable tblTableListLaptop;
+     JButton btnSearch;
+     JScrollPane jspTblScroll;
 
     public ListTableLaptop(){
-        model.addColumn("no");
-        model.addColumn("Merk Laptop");
-        model.addColumn("Tipe Laptop");
-        model.addColumn("Jumlah Ready");
-
+       model = new DefaultTableModel();
+       model.addColumn("Merk Laptop");
+       model.addColumn("Tipe Laptop");
+       model.addColumn("Jumlah Ready");
+       model.addColumn("Harga");
+        String sql = "SELECT * FROM laptop";
         try {
             makeConnection();
-            preparedStatement = connection.prepareStatement("SELECT * FROM laptop");
+            preparedStatement = connection.prepareStatement(sql);
             result = preparedStatement.executeQuery();
-            tblListLaptop.setModel(DbUtils.resultSetToTableModel(result));
             while (result.next()){
-                Integer i = 0;
-                i++;
-                model.addRow(new Object[]{i.toString(), result.getString(2), result.getString(3), result.getString(4)});
+                String a = result.getString(2);
+                String b = result.getString(3);
+                Integer c = result.getInt(4);
+                Integer d = result.getInt(5);
+                model.addRow(new Object[]{a,b,c,d});
             }
+            tblTableListLaptop.setModel(model);
+//            tblTableListLaptop;
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-    }
-
-    public ArrayList<Laptop> laptopList(){
-        ArrayList<Laptop> laptops = new ArrayList<>();
-        String sql;
-
-        try{
-            makeConnection();
-            sql = "SELECT * FROM laptop";
-            statement = connection.createStatement();
-            result = statement.executeQuery(sql);
-            Laptop laptop;
-            while (result.next()){
-                laptop = new Laptop(result.getString(2), result.getString(3), result.getInt(1), result.getInt(4));
-                laptops.add(laptop);
+        btnSearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                searchLaptop();
             }
-        }catch (SQLException e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-            return laptops;
+        });
     }
 
-    public void showLaptop(){
-        ArrayList<Laptop> listLaptop = laptopList();
-
+    private void searchLaptop(){
+        String search;
+        rbMerk
+        if (rbMerk.isSelected()){
+            String sql = "SELECT * FROM laptop WHERE merk_laptop=?";
+            search = tfSearch.getText();
+            try {
+                makeConnection();
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, search);
+                result = preparedStatement.executeQuery();
+                model.setRowCount(0);
+                while (result.next()){
+                    String a = result.getString(2);
+                    String b = result.getString(3);
+                    Integer c = result.getInt(4);
+                    Integer d = result.getInt(5);
+                    model.addRow(new Object[]{a,b,c,d});
+                }
+                tblTableListLaptop.setModel(model);
+//            tblTableListLaptop;
+            }catch (SQLException e){
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+        }
     }
 
     public static void main(String[] args) {
 
-        LaptopListSearch.setTitle("List Laptop Ready");
+        LaptopListSearch.setTitle("List Laptop Ready + Harga");
         LaptopListSearch.setContentPane(new ListTableLaptop().panelListTableLaptop);
         LaptopListSearch.pack();
         LaptopListSearch.setVisible(true);

@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-public class LoginForm extends MainForm{
+public class LoginInventory extends MainInventory {
     private JTextField tfUsername;
     private JPanel panelLogin;
     private JButton btnLogin;
@@ -15,7 +15,7 @@ public class LoginForm extends MainForm{
 
 
 
-    public LoginForm() {
+    public LoginInventory() {
         btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,12 +49,10 @@ public class LoginForm extends MainForm{
                 while (result.next()){
                     String username = result.getString("username"), passsword = result.getString("password");
                     if (user.equals(username) && password.equals(passsword)){
-
                         tampilMainForm();
-
                         mainFrame.dispose();
                         break;
-                    } else {
+                    } else if (tfUsername.getText().isEmpty()){
                         JOptionPane.showMessageDialog(null, "Username / Password salah !","Failed !", JOptionPane.ERROR_MESSAGE);
                         break;
                     }
@@ -67,7 +65,7 @@ public class LoginForm extends MainForm{
 
     public void register(){
         JFrame registerFrame = new JFrame("Register");
-        registerFrame.setContentPane(new RegisterForm().panelRegister);
+        registerFrame.setContentPane(new RegisterInventory().panelRegister);
         registerFrame.pack();
         registerFrame.setVisible(true);
         registerFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -75,7 +73,7 @@ public class LoginForm extends MainForm{
     }
 
     public static void tampilLoginForm(){
-        mainFrame.setContentPane(new LoginForm().panelLogin);
+        mainFrame.setContentPane(new LoginInventory().panelLogin);
         mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         mainFrame.pack();
         mainFrame.setVisible(true);

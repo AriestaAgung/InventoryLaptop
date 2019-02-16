@@ -7,14 +7,14 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DeleteForm extends MainForm {
+public class DeleteInventory extends MainInventory {
     public JPanel panelDelete;
     private JTextField tfID;
     private JButton btnDelete;
     Integer id;
     String sql;
 
-    public DeleteForm() {
+    public DeleteInventory() {
         btnDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -36,7 +36,7 @@ public class DeleteForm extends MainForm {
                preparedStatement.close();
                JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus !");
            } catch (SQLException e) {
-               Logger.getLogger(DeleteForm.class.getName()).log(Level.SEVERE, null, e);
+               Logger.getLogger(DeleteInventory.class.getName()).log(Level.SEVERE, null, e);
                JOptionPane.showMessageDialog(null, "Data tidak berhasil dihapus !");
            }
        } else {
@@ -47,7 +47,7 @@ public class DeleteForm extends MainForm {
 
     public static void main(String[] args) {
         JFrame updateFrame = new JFrame("Inventory Laptop - Delete");
-        updateFrame.setContentPane(new DeleteForm().panelDelete);
+        updateFrame.setContentPane(new DeleteInventory().panelDelete);
         updateFrame.pack();
         updateFrame.setVisible(true);
         updateFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
