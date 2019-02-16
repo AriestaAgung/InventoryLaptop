@@ -2,41 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5ce969b-e94a-4b30-aaf8-e13bab927594" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tech/devatacreative/MainMenuForm.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tech/devatacreative/MainMenuForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/DeleteForm$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/DeleteForm.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/ListTableLaptop$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/ListTableLaptop$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/ListTableLaptop.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/ListTableLaptop.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/LoginForm$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/LoginForm$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/LoginForm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/MainForm$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/MainForm$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/MainForm$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/MainForm$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/MainForm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/MakeConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/MakeConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/RegisterForm$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/RegisterForm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/UpdateForm$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Database/tech/devatacreative/UpdateForm.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/DeleteForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/DeleteForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/DeleteForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/DeleteInventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/Laptop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/Laptop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/ListTableLaptop.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/ListTableLaptop.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/ListTableLaptop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/ListTableLaptop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/LoginForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/LoginForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/LoginInventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/MainForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/MainInventory.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/MainForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/MainInventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/MakeConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/MakeConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/RegisterForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/RegisterForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/RegisterForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/RegisterInventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/UpdateForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/UpdateForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tech/devatacreative/UpdateForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tech/devatacreative/UpdateInventory.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,12 +23,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tech/devatacreative/ListTableLaptop.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+            <state relative-caret-position="138">
+              <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1622#1623#0" expanded="true" />
-                <element signature="e#1662#1663#0" expanded="true" />
+                <element signature="e#1656#1657#0" expanded="true" />
+                <element signature="e#1702#1703#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,7 +74,6 @@
         <option value="$PROJECT_DIR$/src/tech/devatacreative/RegisterForm.form" />
         <option value="$PROJECT_DIR$/src/tech/devatacreative/RegisterForm.java" />
         <option value="$PROJECT_DIR$/src/tech/devatacreative/LoginForm.java" />
-        <option value="$PROJECT_DIR$/src/tech/devatacreative/ListTableLaptop.form" />
         <option value="$PROJECT_DIR$/src/tech/devatacreative/MainForm.java" />
         <option value="$PROJECT_DIR$/src/tech/devatacreative/MakeConnection.java" />
         <option value="$PROJECT_DIR$/src/tech/devatacreative/ListLaptop.java" />
@@ -116,6 +85,7 @@
         <option value="$PROJECT_DIR$/src/tech/devatacreative/UpdateInventory.java" />
         <option value="$PROJECT_DIR$/src/tech/devatacreative/LoginInventory.java" />
         <option value="$PROJECT_DIR$/src/tech/devatacreative/Laptop.java" />
+        <option value="$PROJECT_DIR$/src/tech/devatacreative/ListTableLaptop.form" />
         <option value="$PROJECT_DIR$/src/tech/devatacreative/ListTableLaptop.java" />
       </list>
     </option>
@@ -172,20 +142,6 @@
             </path>
             <path>
               <item name="Database - GUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Database - GUI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="devatacreative" type="462c0819:PsiDirectoryNode" />
-              <item name="LoginInventory" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="Database - GUI" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Database - GUI" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="devatacreative" type="462c0819:PsiDirectoryNode" />
-              <item name="MainInventory" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="Database - GUI" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
             <path>
@@ -206,7 +162,7 @@
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
     <property name="SearchEverywhereHistoryKey" value="Data Sources&#9;null&#9;null" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550322243456" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550324589116" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../JTableSample" />
     <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
@@ -353,7 +309,7 @@
       <window_info anchor="bottom" id="Inspection Results" weight="0.32915717" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32915717" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38724375" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.38724375" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39955357" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -532,12 +488,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tech/devatacreative/ListTableLaptop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+        <state relative-caret-position="138">
+          <caret line="33" column="16" selection-start-line="33" selection-start-column="16" selection-end-line="33" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1622#1623#0" expanded="true" />
-            <element signature="e#1662#1663#0" expanded="true" />
+            <element signature="e#1656#1657#0" expanded="true" />
+            <element signature="e#1702#1703#0" expanded="true" />
           </folding>
         </state>
       </provider>
