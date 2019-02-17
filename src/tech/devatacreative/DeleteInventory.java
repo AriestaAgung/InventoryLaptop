@@ -18,7 +18,11 @@ public class DeleteInventory extends MainInventory {
         btnDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                deleteData();
+                if(tfID.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Product Not Deleted : No Id To Delete");
+                } else {
+                    deleteData();
+                }
             }
         });
     }
@@ -26,10 +30,8 @@ public class DeleteInventory extends MainInventory {
     public void deleteData(){
        id = Integer.parseInt(tfID.getText());
        makeConnection();
-
-       if (!id.equals("")) {
            try {
-               sql = "DELETE FROM laptop WHERE id =?";
+               sql = "DELETE FROM laptop WHERE id_barang =?";
                preparedStatement = connection.prepareStatement(sql);
                preparedStatement.setInt(1, id);
                preparedStatement.executeUpdate();
@@ -39,11 +41,7 @@ public class DeleteInventory extends MainInventory {
                Logger.getLogger(DeleteInventory.class.getName()).log(Level.SEVERE, null, e);
                JOptionPane.showMessageDialog(null, "Data tidak berhasil dihapus !");
            }
-       } else {
-           JOptionPane.showMessageDialog(null, "Product Not Deleted : No Id To Delete");
        }
-
-    }
 
     public static void main(String[] args) {
         JFrame updateFrame = new JFrame("Inventory Laptop - Delete");

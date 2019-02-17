@@ -41,7 +41,7 @@ public class UpdateInventory extends MainInventory {
             if (jmlReady.equals("") || merkLaptop.equals("") || tipeLaptop.equals("") || harga.equals("")) {
                 JOptionPane.showMessageDialog(null, "Update Data Gagal !");
             } else {
-                sql = "UPDATE laptop SET merk_laptop = ?, tipe_laptop = ?, ready = ?, harga = ? WHERE id = ?";
+                sql = "UPDATE laptop SET merk_laptop = ?, tipe_laptop = ?, ready = ?, harga = ? WHERE id_barang = ?";
                 preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, merkLaptop);
                 preparedStatement.setString(2, tipeLaptop);
