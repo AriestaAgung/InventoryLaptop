@@ -2,11 +2,9 @@ package tech.devatacreative;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -23,17 +21,18 @@ public class POS extends MainInventory {
     JComboBox cbKasir;
     JTextField tfQty;
     JTextField tfKodeBarang;
+    private JButton btnTransaksiBaru;
     DefaultTableModel modelTabelPenjualan;
     Locale locale = new Locale("in", "ID");
     Currency currency = Currency.getInstance(locale);
     Calendar cal = Calendar.getInstance();
     Date date = cal.getTime();
+    Integer totalhargatf;
 
 
 
 
     public POS(){
-
 
         modelTabelPenjualan = new DefaultTableModel() {
             @Override
@@ -72,11 +71,20 @@ public class POS extends MainInventory {
         //setKasir
         setCbKasir();
 
-
         btnHapusBarang.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setBtnHapusBarang();
+                if (tblListPenjualan.getModel().getRowCount() == 0){
+                    labelTotalPrice.setText(currency.getSymbol(locale)+" "+"0");
+                }
+
+            }
+        });
+        btnTransaksiBaru.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                newTransaction();
             }
         });
     }
@@ -90,17 +98,81 @@ public class POS extends MainInventory {
             result = preparedStatement.executeQuery();
             while (result.next()){
                 cbKasir.addItem(result.getString(2));
-
             }
-
         }catch (SQLException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 
     public void bayar(){
-        String Kasir;
+        String Kasir,sql, messangePopUp;
+        String totalHargaBayar;
+        Integer  kodebarang, jmlBarang, jmlBayar, kembalian, totalhargahitung;
+        Object objjmlbarang, objKodeBarang;
 
+
+        makeConnection();
+        try {
+            Kasir = (String)cbKasir.getSelectedItem();
+            totalHargaBayar = labelTotalPrice.getText().split("Rp ").toString();
+
+//            for (int i = 0; i < tblListPenjualan.getRowCount(); i++){
+            objjmlbarang = tblListPenjualan.getValueAt(0,3).toString();
+            objKodeBarang = tblListPenjualan.getValueAt(0,0).toString();
+            jmlBarang = Integer.parseInt((String) objjmlbarang);
+            kodebarang = Integer.parseInt((String) objKodeBarang);
+//            }
+            sql = "INSERT INTO penjualan(id_barang, kasir, jumlah_barang, total_harga, tanggal_pembelian) VALUES(?,?,?,?,?)";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, kodebarang);
+            preparedStatement.setString(2, Kasir);
+            preparedStatement.setInt(3,jmlBarang);
+            preparedStatement.setInt(4, totalhargatf);
+            preparedStatement.setDate(5, java.sql.Date.valueOf(java.time.LocalDate.now()));
+            preparedStatement.executeUpdate();
+            jmlBayar = Integer.parseInt(tfJumlahBayar.getText());
+            kembalian = jmlBayar - totalhargatf;
+            messangePopUp = "Kembalian anda : "+ kembalian;
+            if (jmlBayar > totalhargatf){
+                JOptionPane.showMessageDialog(null, messangePopUp);
+            } else if (jmlBayar < totalhargatf){
+                JOptionPane.showMessageDialog(null, "Jumlah Uang Kurang");
+            }
+            decreaseStockReady();
+            JOptionPane.showMessageDialog(null, "Pembayaran Berhasil !");
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+
+    public void decreaseStockReady(){
+        String sql;
+        Integer kodeBarang, jmlBarang;
+        Object objKodeBarang, objjmlbarang;
+        objjmlbarang = tblListPenjualan.getValueAt(0,3).toString();
+        objKodeBarang = tblListPenjualan.getValueAt(0,0).toString();
+        jmlBarang = Integer.parseInt((String) objjmlbarang);
+        kodeBarang = Integer.parseInt((String) objKodeBarang);
+
+        makeConnection();
+        try {
+            sql = "UPDATE laptop SET ready = ready - ? WHERE id_barang = ?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,jmlBarang);
+            preparedStatement.setInt(2, kodeBarang);
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }
+
+    public void newTransaction(){
+        modelTabelPenjualan.setRowCount(0);
+        labelTotalPrice.setText(currency.getSymbol(locale)+" "+"0");
+        tfKodeBarang.setText("");
+        tfQty.setText("");
+        tfJumlahBayar.setText("");
     }
 
     public void setLabelTotalPrice() {
@@ -111,7 +183,9 @@ public class POS extends MainInventory {
             jml = (Integer) tblListPenjualan.getValueAt(i,3);
             total = (Integer) tblListPenjualan.getValueAt(i,4)*jml;
             totalHarga += total;
+            totalhargatf = totalHarga;
             System.out.println(totalHarga);
+            labelTotalPrice.setFont(new Font(labelTotalPrice.getName(), Font.BOLD, 30));
             labelTotalPrice.setText(currency.getSymbol(locale)+" "+String.format("%,d",totalHarga));
         }
     }
@@ -122,6 +196,7 @@ public class POS extends MainInventory {
             modelTabelPenjualan.removeRow(row);
             setLabelTotalPrice();
         }
+
     }
 
     public void setBtnTambahBarang(){

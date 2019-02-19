@@ -102,9 +102,17 @@ public class MainInventory extends MakeConnection{
         updateFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         updateFrame.setResizable(false);
     }
-    public static void tampilMainForm(){
+    public static void tampilMainInventoryForm(){
         JFrame mainFrame = new JFrame("Inventory Laptop");
         mainFrame.setContentPane(new MainInventory().panelMain);
+        mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        mainFrame.pack();
+        mainFrame.setVisible(true);
+        mainFrame.setResizable(false);
+    }
+    public static void tampilMainForm(){
+        JFrame mainFrame = new JFrame("POS-Inventory Laptop");
+        mainFrame.setContentPane(new MainMenuForm().panelMainMenu);
         mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         mainFrame.pack();
         mainFrame.setVisible(true);
